@@ -4,31 +4,31 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="css/buttons.css">
-<link rel="stylesheet" href="css/headers.css">
-<link rel="stylesheet" href="css/input_areas.css">
-<link rel="stylesheet" href="css/util.css">
-<link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/cross_browser.css">
-<link rel="stylesheet" href="css/drawer.css">
 <link rel="stylesheet" href="css/style.css">
-<title>Maintenance Control</title>
+<link rel="stylesheet" href="css/foundation.css">
+<title>Controle de Manutenção</title>
 
 </head>
 <body>
+<div class="row">
+	<div class="large-9 columns text-center">			
+		<h1 class="titulo">Controle de Manutenção</h1>
+	</div>	
+</div>
 
-<section id="index" data-position="current">
-  <section id="drawer" role="region">
-    <header class="fixed">
-      <h1>Your App Name</h1>
-    </header>
-    <article class="content scrollable header">
-      <!-- the app content -->
-    </article>
-  </section>
-</section>
-
+<div class="row">
+	<div class="large-12 columns">		
+		<a href="carro.html">Cadastrar Carro</a>		
+	</div>	
+	<div class="large-12 columns">
+		<a href="manutencao.html">Itens para Manutenção</a>
+	</div>
+</div>
 <script src="js/vendor/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="js/controllers/maintenanceController.js"></script>
+<script src="js/controllers/maintenanceService.js"></script>
 
 </body>
 </html>

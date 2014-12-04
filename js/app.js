@@ -1,1 +1,1 @@
-var app = angular.module("maintenanceControl", []);
+var app = angular.module('maintenanceControl', []);

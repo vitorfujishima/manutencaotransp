@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="maintenanceControl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/foundation.css">
+<title>Controle de Manutenção | Carro</title>
+
+</head>
+<body>
+<div class="row">
+	<div class="large-12 columns text-center">			
+		<h1 class="titulo">Controle de Manutenção | Cadastrar Carro</h1>
+	</div>	
+</div>
+
+<div class="row">
+	<div class="large-12 columns">		
+		<article ng-controller="maintenanceController">
+		  <form ng-submit="addVeiculo()">
+		      	<input type="text" ng-model="marca" placeholder="Marca">
+		      	<input type="text" ng-model="modelo" placeholder="Modelo">
+		      	<input type="text" ng-model="kilometro" placeholder="Kilometro">
+		      	<button class="buttom">SALVAR</button>
+		  </form>
+
+		  <ul>
+				<li ng-repeat="veiculo in veiculos" >{{veiculo}}</li>   
+		  </ul>
+
+		</article>		
+	</div>	
+	<a href="index.html"><< Voltar</a>
+</div>
+<script src="js/vendor/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="js/controllers/maintenanceController.js"></script>
+<script src="js/controllers/maintenanceService.js"></script>
+
+</body>
+</html>

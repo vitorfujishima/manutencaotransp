@@ -1,13 +1,13 @@
 app.factory('maintenanceService', function($window){
 
-	var veiculos[];
-	var lo{};
+	var veiculos=[];
+	var lo={};
 
 	var persistVeiculo = function() {
 		$window.localstorage.setItem('veiculos', JSON.stringify(veiculos));
 	};
 
-	lo.addName = function(veiculo) {
+	lo.addVeiculo = function(veiculo) {
 		veiculos.push(veiculo);
 		persistVeiculo();
 	};
@@ -24,7 +24,7 @@ app.factory('maintenanceService', function($window){
 		}
 	};
 
-	lo.getNames = function() {
+	lo.getVeiculo = function() {
 		var retrivedVeiculos = JSON.parse(
 			$window.localStorage.getItem('veiculos')
 		);
