@@ -1,30 +1,27 @@
-app.factory('maintenanceService', function($window){
+app.factory('maintenanceService', function($window, $filter){
 
 	var veiculos=[];
-	var lo={};
+	var ms={};
 
 	var persistVeiculo = function() {
-		$window.localstorage.setItem('veiculos', JSON.stringify(veiculos));
+		window.localStorage.setItem('veiculos', JSON.stringify(veiculos));
 	};
 
-	lo.addVeiculo = function(veiculo) {
+	ms.addVeiculo = function(veiculo) {
 		veiculos.push(veiculo);
 		persistVeiculo();
 	};
 
-	lo.updateVeiculo = function(veiculo){
+	ms.updateVeiculo = function(veiculo){
 		var index = veiculos.indexOf(veiculo);
 
 			if(index != -1){
-
-				veiculo = veiculo+'-'+count;
-				count++;
 				veiculos[index]=veiculo;
-				persistVeiculo;
+				persistVeiculo();
 		}
 	};
 
-	lo.getVeiculo = function() {
+	ms.getVeiculos = function() {
 		var retrivedVeiculos = JSON.parse(
 			$window.localStorage.getItem('veiculos')
 		);
@@ -34,12 +31,31 @@ app.factory('maintenanceService', function($window){
 		return veiculos;
 	};
 
-	lo.remove = function(veiculo) {
-		var index = veiculos.indexOf(veiculo);
+	ms.removeItem = function(item, veiculoId){
+		var veiculo = veiculos.filter(function(veiculo){
+			return veiculo.$$hashKey == veiculoId;
+		});
+
+		if(item.$index != -1) {
+			veiculo[0].itens.splice(item.$index, 1);
+		}
+
+		var index = veiculos.indexOf(veiculo[0]);
 		if(index != -1) {
-			veiculos.splice(index, 1);
+			veiculos[index] = veiculo[0];
 			persistVeiculo();
 		}
 	};
 
+	ms.getVeiculoById = function(veiculoId){
+		return veiculos.filter(function(veiculo){
+			return veiculo.$$hashKey == veiculoId;
+		});
+	};
+
+	ms.getIndex = function(veiculo){
+		return veiculos.indexOf(veiculo);
+	}
+
+	return ms;
 });

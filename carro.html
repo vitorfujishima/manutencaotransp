@@ -1,39 +1,63 @@
 <!DOCTYPE html>
 <html ng-app="maintenanceControl">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/foundation.css">
-<title>Controle de Manutenção | Carro</title>
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/foundation.css">
+	<script src="js/jquery.js"></script>
 </head>
 <body>
 <div class="row">
 	<div class="large-12 columns text-center">			
-		<h1 class="titulo">Controle de Manutenção | Cadastrar Carro</h1>
+		<h1 class="titulo">Controle de Manutenção de Carros</h1>
 	</div>	
 </div>
 
-<div class="row">
-	<div class="large-12 columns">		
-		<article ng-controller="maintenanceController">
+<div class="row" ng-controller="maintenanceControl">
+	<div class="large-12 columns">
+		<article>
 		  <form ng-submit="addVeiculo()">
 		      	<input type="text" ng-model="marca" placeholder="Marca">
 		      	<input type="text" ng-model="modelo" placeholder="Modelo">
 		      	<input type="text" ng-model="kilometro" placeholder="Kilometro">
-		      	<button class="buttom">SALVAR</button>
+		      	<input type="text" ng-model="item" placeholder="itens de manutenção">
+		      	<a href="#" ng-click="addItensInArray()" class="button">+</a> 
+		      	<input type="submit" class="button" value="Salvar">
+		      	<span ng-show="veiculo.itens.length > 0">Exite(m) {{veiculo.itens.length}} para manutenção</span>
 		  </form>
 
-		  <ul>
-				<li ng-repeat="veiculo in veiculos" >{{veiculo}}</li>   
-		  </ul>
-
+		  <table>
+		  	<thead>
+		  		<tr>
+		  			<th width="200"  class="text-center">marca</th>
+		  			<th width="200"  class="text-center">Modelo</th>
+		  			<th width="200"  class="text-center">Kilometro</th>
+		  			<td width="400"  class="text-center">itens</td>
+		  		</tr>
+		  	</thead>
+		  	<tbody ng-repeat="veiculo in veiculos">
+		  		<tr>
+		  			<td>{{veiculo.marca}}</td>
+		  			<td>{{veiculo.modelo}}</td>
+		  			<td>{{veiculo.kilometro}}</td>
+		  			<td>
+		  				<ul ng-repeat="item in veiculo.itens">
+		  					<li>
+		  						<span>{{item}}</span>
+		  						&nbsp;<a href="#" ng-click="deleteItem(this, veiculo.$$hashKey)">X</a>
+		  					<li>
+		  				<ul>
+		  			</td>
+		  			<td><a href="#" ng-click="editVeiculo(veiculo.$$hashKey)">Editar</a></td>
+		  		</tr>
+		  	</tbody>
+		  </table>
 		</article>		
 	</div>	
-	<a href="index.html"><< Voltar</a>
+	<a href="index.html">Voltar</a>
 </div>
+
 <script src="js/vendor/angular.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/foundation.min.js"></script>
