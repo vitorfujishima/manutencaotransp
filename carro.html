@@ -15,7 +15,7 @@
 </div>
 
 <div class="row" ng-controller="maintenanceControl">
-	<div class="large-12 columns">
+	<div class="small-12 columns">
 		<article>
 		  <form ng-submit="addVeiculo()">
 		      	<input type="text" ng-model="marca" placeholder="Marca">
@@ -26,14 +26,16 @@
 		      	<input type="submit" class="button" value="Salvar">
 		      	<span ng-show="veiculo.itens.length > 0">Exite(m) {{veiculo.itens.length}} para manutenção</span>
 		  </form>
-
 		  <table>
 		  	<thead>
 		  		<tr>
-		  			<th width="200"  class="text-center">marca</th>
-		  			<th width="200"  class="text-center">Modelo</th>
-		  			<th width="200"  class="text-center">Kilometro</th>
-		  			<td width="400"  class="text-center">itens</td>
+		  			<th data-tooltip aria-haspopup="true" class="has-tip" title="Marca do Carro" width="200"  class="text-center">
+		  				Marca</th>
+		  			<th data-tooltip aria-haspopup="true" class="has-tip" title="Modelo do Carro" width="200"  class="text-center">
+		  				Modelo</th>
+		  			<th data-tooltip aria-haspopup="true" class="has-tip" title="Kilometragem do Carro" width="200"  class="text-center">	 Kilometro</th>
+		  			<td data-tooltip aria-haspopup="true" class="has-tip" title="Itens para Manutenção do carro" width="400"  
+		  				class="text-center">itens</td>
 		  		</tr>
 		  	</thead>
 		  	<tbody ng-repeat="veiculo in veiculos">
